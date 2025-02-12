@@ -1,9 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
-import QRCode, {
-	QRCodeDataURLType,
-	QRCodeErrorCorrectionLevel,
-	QRCodeToDataURLOptionsOther
-} from 'qrcode'
+import { useState, useEffect, useCallback } from 'react'
+import QRCode, { QRCodeDataURLType, QRCodeErrorCorrectionLevel } from 'qrcode'
 import { QrCode, Download } from 'lucide-react'
 import { Input } from './components/ui/input'
 import {
@@ -31,20 +27,24 @@ function App() {
 	const [qrUrl, setQrUrl] = useState<string>('')
 	const [size, setSize] = useState<number>(300)
 
-	const [errorCorrectionLevel, setErrorCorrectionLevel] =
-		useState<QRCodeErrorCorrectionLevel>('H')
+	const sizesRecordOptions: Record<number, string> = {
+		300: '300px',
+		600: '600px',
+		900: '900px',
+		1200: '1200px',
+		1500: '1500px',
+		1800: '1800px'
+	}
 
-	const errorCorrectionOptionsRecord: Record<
-		QRCodeErrorCorrectionLevel,
-		string
+	const [errorCorrectionLevel, setErrorCorrectionLevel] =
+		useState<QRCodeErrorCorrectionLevel>('medium')
+
+	const errorCorrectionOptionsRecord: Partial<
+		Record<QRCodeErrorCorrectionLevel, string>
 	> = {
-		H: 'High',
 		high: 'High',
-		L: 'Low',
 		low: 'Low',
-		M: 'Medium',
 		medium: 'Medium',
-		Q: 'Quartile',
 		quartile: 'Quartile'
 	}
 
@@ -58,25 +58,22 @@ function App() {
 	const generateQR = useCallback(async () => {
 		if (!text) return
 
-		try {
-			const url = await QRCode.toDataURL(text, {
-				width: size,
-				type: type
-			})
-			setQrUrl(url)
-		} catch (err) {
-			console.error(err)
-		}
-	}, [text, size, errorCorrection])
+		await QRCode.toDataURL(text, {
+			width: size,
+			type: type,
+			errorCorrectionLevel
+		})
+			.then((url) => setQrUrl(url))
+			.catch((err) => console.error(err))
+	}, [size, errorCorrectionLevel, type, text])
 
 	const DELAY = 500
 	const debounce = useDebounce()
 
 	useEffect(() => {
-		if (text) {
-			debounce(generateQR, DELAY)
-		}
-	}, [text])
+		if (text) debounce(generateQR, DELAY)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [text, generateQR])
 
 	const downloadQR = () => {
 		if (!qrUrl) return
@@ -120,6 +117,54 @@ function App() {
 								<SelectGroup>
 									<SelectLabel>Types</SelectLabel>
 									{Object.entries(typeOptionsRecord).map(([key, value]) => (
+										<SelectItem
+											key={key}
+											value={key}
+										>
+											{value}
+										</SelectItem>
+									))}
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+
+						<Select
+							onValueChange={(value) =>
+								setErrorCorrectionLevel(value as QRCodeErrorCorrectionLevel)
+							}
+							defaultValue={errorCorrectionLevel}
+						>
+							<SelectTrigger>
+								<SelectValue placeholder='Select a level' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectLabel>Levels</SelectLabel>
+									{Object.entries(errorCorrectionOptionsRecord).map(
+										([key, value]) => (
+											<SelectItem
+												key={key}
+												value={key}
+											>
+												{value}
+											</SelectItem>
+										)
+									)}
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+
+						<Select
+							onValueChange={(value) => setSize(Number(value))}
+							defaultValue={size.toString()}
+						>
+							<SelectTrigger>
+								<SelectValue placeholder='Select a size' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectGroup>
+									<SelectLabel>Sizes</SelectLabel>
+									{Object.entries(sizesRecordOptions).map(([key, value]) => (
 										<SelectItem
 											key={key}
 											value={key}
