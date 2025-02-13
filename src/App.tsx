@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import QRCode from 'qrcode'
-import { QrCode, Download, Moon, Sun, Settings2 } from 'lucide-react'
+import { QrCode, Download, Settings2 } from 'lucide-react'
 import { Input } from './components/ui/input'
 import {
 	Card,
@@ -16,10 +16,10 @@ import { useDebounce } from './hooks/use-debounce'
 import { Skeleton } from './components/ui/skeleton'
 import { useQrCodeStore } from './store/use-qr-code-store'
 import { Spinner } from './components/app/spinner/spinner'
-import clsx from 'clsx'
-import { useThemeStore } from './store/use-theme-store'
 import { ResponsiveModal } from './components/app/responsive-modal/responsive-modal'
 import { ConfigForm } from './components/app/config-form/config-form'
+import { ThemeButton } from './components/app/theme-button/theme-button'
+import { QrCodeGuy } from './components/app/svg/qr-code-guy'
 
 function App() {
 	const [text, setText] = useState<string>('')
@@ -37,8 +37,6 @@ function App() {
 	const [isLoading, setIsLoading] = useState(false)
 
 	const generateQR = useCallback(async () => {
-		if (!text) return
-
 		await QRCode.toDataURL(text, {
 			width: size,
 			errorCorrectionLevel: level,
@@ -52,13 +50,14 @@ function App() {
 			.finally(() => setIsLoading(false))
 	}, [level, size, type, text])
 
-	const DELAY = 1000
+	const DELAY = 500
 	const debounce = useDebounce()
 
 	useEffect(() => {
-		if (!text) handleClear()
+		if (!text) setQrUrl('')
 		if (text) {
 			setIsLoading(true)
+			setQrUrl('')
 			debounce(generateQR, DELAY)
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,32 +73,32 @@ function App() {
 		document.body.removeChild(link)
 	}
 
-	const theme = useThemeStore((state) => state.theme)
-	const toggleTheme = useThemeStore((state) => state.toggleTheme)
-
 	return (
 		<div
-			className={clsx([
-				theme,
-				'bg-background text-foreground relative grid min-h-screen place-items-center'
-			])}
+			className={
+				'relative container mx-auto grid min-h-[100dvh] place-items-center px-4'
+			}
 		>
-			<div className='absolute top-4 right-4'>
-				<Button
-					size={'icon'}
-					onClick={toggleTheme}
-				>
-					{theme === 'light' ? <Moon /> : <Sun />}
-				</Button>
+			<div className='absolute top-4 right-4 hidden md:block'>
+				<ThemeButton />
 			</div>
 
-			<Card className='w-[350px] flex-1'>
-				<CardHeader>
-					<CardTitle className='flex items-center gap-2'>
-						<QrCode className='h-5 w-5 text-sky-400' />
-						<h1>QR Code Generator</h1>
-					</CardTitle>
-					<CardDescription>Customize and download your QR code</CardDescription>
+			<Card className='w-full shadow-none md:w-sm'>
+				<CardHeader className='flex flex-row items-center justify-between'>
+					<div className='grid gap-1'>
+						<CardTitle className='flex items-center justify-between'>
+							<div className='flex items-center gap-2'>
+								<QrCode className='text-primary h-6 w-6' />
+								<h1>QR Code Generator</h1>
+							</div>
+						</CardTitle>
+						<CardDescription>
+							Customize and download your QR code
+						</CardDescription>
+					</div>
+					<div className='block md:hidden'>
+						<ThemeButton />
+					</div>
 				</CardHeader>
 				<CardContent className='grid gap-4'>
 					<div className='aspect-square rounded-lg border p-4'>
@@ -109,11 +108,15 @@ function App() {
 							<img
 								src={qrUrl}
 								alt='QR Code'
-								className='aspect-square rounded-md border'
+								className='aspect-square w-full rounded-lg border'
 							/>
 						)}
+
+						{!qrUrl && !isLoading && (
+							<QrCodeGuy />
+						)}
 					</div>
-					<div className='focus-within:border-foreground flex items-center gap-2 rounded-md border p-2'>
+					<div className='flex items-center gap-2 rounded-md border p-2 focus-within:ring-1'>
 						<Input
 							type='text'
 							value={text}
@@ -140,33 +143,38 @@ function App() {
 				<CardFooter className='flex gap-2'>
 					{!qrUrl && (
 						<Button
-							variant='outline'
 							className='flex-1'
+							size={'lg'}
+							variant={isLoading ? 'outline' : 'default'}
 							disabled={isLoading}
 						>
 							{isLoading && <Spinner />}
 							{isLoading ? 'Generating...' : 'Generate'}
 						</Button>
 					)}
-					{qrUrl && (
-						<Button
-							variant='outline'
-							className='flex-1'
-							onClick={handleClear}
-							disabled={isLoading}
-						>
-							Clear
-						</Button>
-					)}
-					{qrUrl && (
-						<Button
-							className='flex-1'
-							onClick={downloadQR}
-							disabled={isLoading}
-						>
-							<Download />
-							Download
-						</Button>
+
+					{qrUrl && !isLoading && (
+						<>
+							<Button
+								variant='outline'
+								className='flex-1'
+								size={'lg'}
+								onClick={handleClear}
+								disabled={isLoading}
+							>
+								Clear
+							</Button>
+
+							<Button
+								className='flex-1'
+								size={'lg'}
+								onClick={downloadQR}
+								disabled={isLoading}
+							>
+								<Download />
+								Download
+							</Button>
+						</>
 					)}
 				</CardFooter>
 			</Card>
