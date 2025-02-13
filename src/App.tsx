@@ -109,16 +109,17 @@ function App() {
 							<img
 								src={qrUrl}
 								alt='QR Code'
-								className='aspect-square rounded-md'
+								className='aspect-square rounded-md border'
 							/>
 						)}
 					</div>
-					<div className='flex items-center gap-2'>
+					<div className='focus-within:border-foreground flex items-center gap-2 rounded-md border p-2'>
 						<Input
 							type='text'
 							value={text}
 							onChange={(e) => setText(e.target.value)}
 							placeholder='Please enter some text'
+							className='border-none shadow-none focus-visible:ring-0'
 						/>
 
 						<ResponsiveModal
