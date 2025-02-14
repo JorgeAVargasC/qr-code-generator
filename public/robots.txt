@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://https://javc-qr-code-generator.vercel.app/sitemap.xml

@@ -1,0 +1,39 @@
+{
+	"short_name": "🚀 QR Code | 💻 Generator ⚡",
+	"name": "🚀 QR Code | 💻 Generator ⚡",
+	"icons": [
+		{
+			"src": "/images/favicon.svg",
+			"type": "image/svg+xml",
+			"sizes": "1000x1000"
+		},
+		{
+			"src": "/images/192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/images/512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#0B0E13",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#0B0E13",
+	"description": "Paste your text and get a QR Code. 🚀",
+	"screenshots": [
+		{
+			"src": "/images/screenshot1.png",
+			"type": "image/png",
+			"sizes": "540x720"
+		},
+		{
+			"src": "/images/screenshot2.jpg",
+			"type": "image/jpg",
+			"sizes": "540x720"
+		}
+	]
+}
