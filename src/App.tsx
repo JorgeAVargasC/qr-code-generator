@@ -50,7 +50,7 @@ function App() {
 			.finally(() => setIsLoading(false))
 	}, [level, size, type, text])
 
-	const DELAY = 500
+	const DELAY = 700
 	const debounce = useDebounce()
 
 	useEffect(() => {
@@ -114,7 +114,7 @@ function App() {
 
 						{!qrUrl && !isLoading && <QrCodeGuy />}
 					</div>
-					<div className='flex items-center gap-2 rounded-md border p-2 focus-within:ring-1 focus-within:ring-ring'>
+					<div className='focus-within:ring-ring flex items-center gap-2 rounded-md border p-2 focus-within:ring-1'>
 						<Input
 							type='text'
 							value={text}
@@ -130,6 +130,7 @@ function App() {
 								<Button
 									size='icon'
 									className='aspect-square'
+									aria-label='Preferences'
 								>
 									<Settings2 />
 								</Button>
@@ -139,11 +140,11 @@ function App() {
 						</ResponsiveModal>
 					</div>
 				</CardContent>
-				<CardFooter className='flex gap-2'>
+				<CardFooter className='grid gap-2'>
 					{!qrUrl && (
 						<Button
-							className='flex-1'
 							size={'lg'}
+							aria-label='Generate QR Code'
 							variant={isLoading ? 'outline' : 'default'}
 							disabled={isLoading}
 						>
@@ -153,27 +154,27 @@ function App() {
 					)}
 
 					{qrUrl && !isLoading && (
-						<>
+						<div className='grid grid-cols-2 gap-4'>
 							<Button
 								variant='outline'
-								className='flex-1'
 								size={'lg'}
 								onClick={handleClear}
 								disabled={isLoading}
+								aria-label='Clear'
 							>
 								Clear
 							</Button>
 
 							<Button
-								className='flex-1'
 								size={'lg'}
 								onClick={downloadQR}
 								disabled={isLoading}
+								aria-label='Download'
 							>
 								<Download />
 								Download
 							</Button>
-						</>
+						</div>
 					)}
 				</CardFooter>
 			</Card>

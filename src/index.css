@@ -14,7 +14,7 @@
 	--bunker-400: #8195b6;
 	--bunker-500: #6079a3;
 	--bunker-600: #4c6184;
-	--bunker-700: #3a4a64;
+	--bunker-700: #1e2736;
 	--bunker-800: #171d28;
 	--bunker-900: #0f141c;
 	--bunker-950: #0b0e13;
@@ -47,15 +47,15 @@
 }
 
 .dark {
-	--background: var(--bunker-900);
+	--background: var(--bunker-950);
 	--foreground: var(--bunker-500);
-	--card: var(--bunker-950);
+	--card: var(--bunker-800);
 	--card-foreground: var(--bunker-50);
-	--popover: var(--bunker-950);
+	--popover: var(--bunker-800);
 	--popover-foreground: var(--bunker-50);
 	--primary: var(--color-primary);
 	--primary-foreground: var(--bunker-50);
-	--secondary: var(--bunker-800);
+	--secondary: var(--bunker-900);
 	--secondary-foreground: var(--color-primary);
 	--muted: var(--bunker-800);
 	--muted-foreground: var(--bunker-400);
@@ -63,8 +63,8 @@
 	--accent-foreground: var(--color-primary);
 	--destructive: #ef4455;
 	--destructive-foreground: var(--bunker-50);
-	--border: var(--bunker-800);
-	--input: var(--bunker-800);
+	--border: var(--bunker-700);
+	--input: var(--bunker-700);
 	--ring: var(--color-primary);
 	--chart-1: hsl(220 70% 50%);
 	--chart-2: hsl(160 60% 45%);

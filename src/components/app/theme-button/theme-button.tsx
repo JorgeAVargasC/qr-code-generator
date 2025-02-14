@@ -9,6 +9,7 @@ export const ThemeButton = () => {
 	return (
 		<Button
 			size={'icon'}
+			aria-label='Toggle theme'
 			onClick={toggleTheme}
 		>
 			{theme === 'light' ? <Moon /> : <Sun />}
