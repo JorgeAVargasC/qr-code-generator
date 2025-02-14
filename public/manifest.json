@@ -1,6 +1,6 @@
 {
-	"short_name": "🚀 QR Code | 💻 Generator ⚡",
-	"name": "🚀 QR Code | 💻 Generator ⚡",
+	"short_name": "🚀 QR Code | 📲 Generator ⚡",
+	"name": "🚀 QR Code | 📲 Generator ⚡",
 	"icons": [
 		{
 			"src": "/images/favicon.svg",
@@ -23,7 +23,7 @@
 	"display": "standalone",
 	"scope": "/",
 	"theme_color": "#0B0E13",
-	"description": "Paste your text and get a QR Code. 🚀",
+	"description": "✨📲 Generate QR codes quickly, easily, and effortlessly with our intuitive tool! 🔹",
 	"screenshots": [
 		{
 			"src": "/images/screenshot1.png",
