@@ -54,7 +54,7 @@
 	--popover: var(--bunker-800);
 	--popover-foreground: var(--bunker-50);
 	--primary: var(--color-primary);
-	--primary-foreground: var(--bunker-50);
+	--primary-foreground: var(--color-white);
 	--secondary: var(--bunker-900);
 	--secondary-foreground: var(--color-primary);
 	--muted: var(--bunker-800);
@@ -62,7 +62,7 @@
 	--accent: var(--bunker-800);
 	--accent-foreground: var(--color-primary);
 	--destructive: #ef4455;
-	--destructive-foreground: var(--bunker-50);
+	--destructive-foreground: var(--color-white);
 	--border: var(--bunker-700);
 	--input: var(--bunker-700);
 	--ring: var(--color-primary);
