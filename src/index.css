@@ -2,130 +2,123 @@
 
 @plugin 'tailwindcss-animate';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-primary: var(--color-indigo-500);
+	--color-primary: var(--color-indigo-500);
 
-  --bunker-50: #f2f4f7;
-  --bunker-100: #e2e6ee;
-  --bunker-200: #c1cbdb;
-  --bunker-300: #a1b0c9;
-  --bunker-400: #8195b6;
-  --bunker-500: #6079a3;
-  --bunker-600: #4c6184;
-  --bunker-700: #3a4a64;
-  --bunker-800: #171d28;
-  --bunker-900: #0f141c;
-  --bunker-950: #0b0e13;
+	--bunker-50: #f2f4f7;
+	--bunker-100: #e2e6ee;
+	--bunker-200: #c1cbdb;
+	--bunker-300: #a1b0c9;
+	--bunker-400: #8195b6;
+	--bunker-500: #6079a3;
+	--bunker-600: #4c6184;
+	--bunker-700: #3a4a64;
+	--bunker-800: #171d28;
+	--bunker-900: #0f141c;
+	--bunker-950: #0b0e13;
 
-  --background: var(--bunker-100);
-  --foreground: var(--bunker-900);
-  --card: var(--color-white);
-  --card-foreground: var(--bunker-800);
-  --popover: var(--bunker-100);
-  --popover-foreground: var(--bunker-800);
-  --primary: var(--color-primary);
-  --primary-foreground: var(--bunker-50);
-  --secondary: var(--bunker-200);
-  --secondary-foreground: var(--color-primary);
-  --muted: var(--bunker-200);
-  --muted-foreground: var(--bunker-500);
-  --accent: var(--bunker-50);
-  --accent-foreground: var(--color-primary);
-  --destructive: #ef4455;
-  --destructive-foreground: var(--bunker-50);
-  --border: var(--bunker-100);
-  --input: var(--bunker-100);
-  --ring: var(--color-primary);
-  --chart-1: hsl(220 70% 50%);
-  --chart-2: hsl(160 60% 45%);
-  --chart-3: hsl(30 80% 55%);
-  --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%);
-  --radius: 0.6rem;
+	--background: var(--bunker-100);
+	--foreground: var(--bunker-900);
+	--card: var(--color-white);
+	--card-foreground: var(--bunker-800);
+	--popover: var(--color-white);
+	--popover-foreground: var(--bunker-800);
+	--primary: var(--color-primary);
+	--primary-foreground: var(--bunker-50);
+	--secondary: var(--bunker-200);
+	--secondary-foreground: var(--color-primary);
+	--muted: var(--bunker-200);
+	--muted-foreground: var(--bunker-500);
+	--accent: var(--bunker-50);
+	--accent-foreground: var(--color-primary);
+	--destructive: #ef4455;
+	--destructive-foreground: var(--bunker-50);
+	--border: var(--bunker-100);
+	--input: var(--bunker-100);
+	--ring: var(--color-primary);
+	--chart-1: hsl(220 70% 50%);
+	--chart-2: hsl(160 60% 45%);
+	--chart-3: hsl(30 80% 55%);
+	--chart-4: hsl(280 65% 60%);
+	--chart-5: hsl(340 75% 55%);
+	--radius: 0.6rem;
 }
 
 .dark {
-  --background: var(--bunker-900);
-  --foreground: var(--bunker-500);
-  --card: var(--bunker-950);
-  --card-foreground: var(--bunker-50);
-  --popover: var(--bunker-950);
-  --popover-foreground: var(--bunker-50);
-  --primary: var(--color-primary);
-  --primary-foreground: var(--bunker-50);
-  --secondary: var(--bunker-800);
-  --secondary-foreground: var(--color-primary);
-  --muted: var(--bunker-800);
-  --muted-foreground: var(--bunker-400);
-  --accent: var(--bunker-800);
-  --accent-foreground: var(--color-primary);
-  --destructive: #ef4455;
-  --destructive-foreground: var(--bunker-50);
-  --border: var(--bunker-800);
-  --input: var(--bunker-800);
-  --ring: var(--color-primary);
-  --chart-1: hsl(220 70% 50%);
-  --chart-2: hsl(160 60% 45%);
-  --chart-3: hsl(30 80% 55%);
-  --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%);
+	--background: var(--bunker-900);
+	--foreground: var(--bunker-500);
+	--card: var(--bunker-950);
+	--card-foreground: var(--bunker-50);
+	--popover: var(--bunker-950);
+	--popover-foreground: var(--bunker-50);
+	--primary: var(--color-primary);
+	--primary-foreground: var(--bunker-50);
+	--secondary: var(--bunker-800);
+	--secondary-foreground: var(--color-primary);
+	--muted: var(--bunker-800);
+	--muted-foreground: var(--bunker-400);
+	--accent: var(--bunker-800);
+	--accent-foreground: var(--color-primary);
+	--destructive: #ef4455;
+	--destructive-foreground: var(--bunker-50);
+	--border: var(--bunker-800);
+	--input: var(--bunker-800);
+	--ring: var(--color-primary);
+	--chart-1: hsl(220 70% 50%);
+	--chart-2: hsl(160 60% 45%);
+	--chart-3: hsl(30 80% 55%);
+	--chart-4: hsl(280 65% 60%);
+	--chart-5: hsl(340 75% 55%);
 }
 
 @theme inline {
-  --color-bunker-50: var(--bunker-50);
-  --color-bunker-100: var(--bunker-100);
-  --color-bunker-200: var(--bunker-200);
-  --color-bunker-300: var(--bunker-300);
-  --color-bunker-400: var(--bunker-400);
-  --color-bunker-500: var(--bunker-500);
-  --color-bunker-600: var(--bunker-600);
-  --color-bunker-700: var(--bunker-700);
-  --color-bunker-800: var(--bunker-800);
-  --color-bunker-900: var(--bunker-900);
-  --color-bunker-950: var(--bunker-950);
+	--color-bunker-50: var(--bunker-50);
+	--color-bunker-100: var(--bunker-100);
+	--color-bunker-200: var(--bunker-200);
+	--color-bunker-300: var(--bunker-300);
+	--color-bunker-400: var(--bunker-400);
+	--color-bunker-500: var(--bunker-500);
+	--color-bunker-600: var(--bunker-600);
+	--color-bunker-700: var(--bunker-700);
+	--color-bunker-800: var(--bunker-800);
+	--color-bunker-900: var(--bunker-900);
+	--color-bunker-950: var(--bunker-950);
 
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
 
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
+	* {
+		@apply border-border outline-ring/50;
+	}
 }

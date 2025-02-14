@@ -22,9 +22,9 @@ export const ConfigForm = () => {
 	const setType = useQrCodeStore((state) => state.setType)
 
 	return (
-		<>
+		<div className='grid grid-cols-2 gap-4'>
 			<fieldset className='flex flex-col gap-2'>
-				<Label htmlFor='type'>Type</Label>
+				<Label htmlFor='type'>Format</Label>
 
 				<Select
 					name='type'
@@ -32,11 +32,11 @@ export const ConfigForm = () => {
 					defaultValue={type}
 				>
 					<SelectTrigger>
-						<SelectValue placeholder='Select a type' />
+						<SelectValue placeholder='Select a format' />
 					</SelectTrigger>
 					<SelectContent>
 						<SelectGroup>
-							<SelectLabel>Types</SelectLabel>
+							<SelectLabel>Formats</SelectLabel>
 							{Object.entries(typeOptions).map(([key, value]) => (
 								<SelectItem
 									key={key}
@@ -51,7 +51,7 @@ export const ConfigForm = () => {
 			</fieldset>
 
 			<fieldset className='flex flex-col gap-2'>
-				<Label htmlFor='errorCorrection'>Error Correction Level</Label>
+				<Label htmlFor='errorCorrection'>Correction Level</Label>
 				<Select
 					name='errorCorrectionLevel'
 					onValueChange={setLevel}
@@ -76,7 +76,7 @@ export const ConfigForm = () => {
 				</Select>
 			</fieldset>
 
-			<fieldset>
+			<fieldset className='col-span-full flex flex-col gap-2'>
 				<Label htmlFor='size'>Size</Label>
 
 				<Select
@@ -102,6 +102,6 @@ export const ConfigForm = () => {
 					</SelectContent>
 				</Select>
 			</fieldset>
-		</>
+		</div>
 	)
 }

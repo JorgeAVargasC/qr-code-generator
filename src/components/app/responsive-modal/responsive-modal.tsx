@@ -69,10 +69,11 @@ export const ResponsiveModal = ({
 					{description && <DrawerDescription>{description}</DrawerDescription>}
 				</DrawerHeader>
 
-				{children}
-				<DrawerFooter className='pt-2'>
+				<div className='px-4'>{children}</div>
+
+				<DrawerFooter className='pt-6'>
 					<DrawerClose asChild>
-						<Button variant='outline'>Cancel</Button>
+						<Button variant='outline'>Close</Button>
 					</DrawerClose>
 				</DrawerFooter>
 			</DrawerContent>

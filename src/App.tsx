@@ -112,16 +112,15 @@ function App() {
 							/>
 						)}
 
-						{!qrUrl && !isLoading && (
-							<QrCodeGuy />
-						)}
+						{!qrUrl && !isLoading && <QrCodeGuy />}
 					</div>
-					<div className='flex items-center gap-2 rounded-md border p-2 focus-within:ring-1'>
+					<div className='flex items-center gap-2 rounded-md border p-2 focus-within:ring-1 focus-within:ring-ring'>
 						<Input
 							type='text'
 							value={text}
 							onChange={(e) => setText(e.target.value)}
-							placeholder='Please enter some text'
+							placeholder='https://jorgeavargasc.github.io'
+							autoFocus
 							className='border-none shadow-none focus-visible:ring-0'
 						/>
 
