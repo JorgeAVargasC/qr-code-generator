@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react'
 import QRCode from 'qrcode'
 import { QrCode, Download, Settings2 } from 'lucide-react'
 import { Input } from './components/ui/input'
@@ -17,9 +17,12 @@ import { Skeleton } from './components/ui/skeleton'
 import { useQrCodeStore } from './store/use-qr-code-store'
 import { Spinner } from './components/app/spinner/spinner'
 import { ResponsiveModal } from './components/app/responsive-modal/responsive-modal'
-import { ConfigForm } from './components/app/config-form/config-form'
 import { ThemeButton } from './components/app/theme-button/theme-button'
 import { QrCodeGuy } from './components/app/svg/qr-code-guy'
+
+const ConfigForm = lazy(
+	async () => await import('./components/app/config-form/config-form')
+)
 
 function App() {
 	const [text, setText] = useState<string>('')
@@ -136,7 +139,11 @@ function App() {
 								</Button>
 							}
 						>
-							<ConfigForm />
+							<Suspense
+								fallback={<Skeleton className='h-[132px] rounded-md' />}
+							>
+								<ConfigForm />
+							</Suspense>
 						</ResponsiveModal>
 					</div>
 				</CardContent>

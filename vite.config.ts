@@ -10,5 +10,18 @@ export default defineConfig({
 		alias: {
 			'@': path.resolve(__dirname, './src')
 		}
+	},
+	build: {
+		target: 'esnext',
+		minify: 'esbuild',
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					react: ['react', 'react-dom'],
+					libs: ['qrcode'],
+					zustand: ['zustand']
+				}
+			}
+		}
 	}
 })

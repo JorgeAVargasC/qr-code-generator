@@ -13,7 +13,7 @@ import { levelsOptions } from '../../../constants/levels-options'
 import { sizesOptions } from '../../../constants/sizes-options'
 import { useQrCodeStore } from '../../../store/use-qr-code-store'
 
-export const ConfigForm = () => {
+const ConfigForm = () => {
 	const size = useQrCodeStore((state) => state.size)
 	const level = useQrCodeStore((state) => state.level)
 	const type = useQrCodeStore((state) => state.type)
@@ -105,3 +105,5 @@ export const ConfigForm = () => {
 		</div>
 	)
 }
+
+export default ConfigForm
